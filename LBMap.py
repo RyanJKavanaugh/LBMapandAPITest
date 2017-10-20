@@ -39,7 +39,7 @@ class Verify_Idaho_Links(unittest.TestCase):
 
         if  rID.status_code != 200:
             print 'LB Idaho Map Is Down'
-            testcounter += 1
+          #  testcounter += 1
 
         # Louisiana
         urlLA = 'https://lb.511la.org/lalb/'
