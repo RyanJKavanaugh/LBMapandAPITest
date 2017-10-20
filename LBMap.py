@@ -15,7 +15,11 @@ import json
 import jsonpickle
 import xlrd
 import requests
+from pyvirtualdisplay import Display
 
+
+display = Display(visible=0, size=(800, 800))
+display.start()
 
 class Verify_Idaho_Links(unittest.TestCase):
 
