@@ -18,8 +18,8 @@ import requests
 from pyvirtualdisplay import Display
 
 
-# display = Display(visible=0, size=(800, 800))
-# display.start()
+display = Display(visible=0, size=(800, 800))
+display.start()
 
 # Function to access Agency LB Website and retrieve Google Maps API link
 def Get_Google_Maps_API_Link(driver, url):
