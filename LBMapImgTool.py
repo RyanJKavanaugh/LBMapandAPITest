@@ -29,7 +29,7 @@ class Verify_Idaho_Links(unittest.TestCase):
         driver = webdriver.Chrome()
 
         # Idaho
-        urlID = 'http://crc-prod-id-wf-elb-382957924.us-west-2.elb.amazonaws.com/idlb/'
+        urlID = 'http://lb.511.idaho.gov/idlb/'
         driver.get(urlID)
 
         _inputsID = driver.find_elements_by_xpath('//img')
