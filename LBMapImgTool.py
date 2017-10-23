@@ -18,8 +18,8 @@ import requests
 from pyvirtualdisplay import Display
 
 
-# display = Display(visible=0, size=(800, 800))
-# display.start()
+display = Display(visible=0, size=(800, 800))
+display.start()
 
 class Verify_Idaho_Links(unittest.TestCase):
 
