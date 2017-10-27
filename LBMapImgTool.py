@@ -38,7 +38,7 @@ def Get_Google_Maps_API_Link(driver, url):
                 return input.get_attribute('src')
     except:
         print url
-        print "The above is faulty"
+        print "The site is faulty"
 
 
 # Function to get the status code for an API request, given the proper link
@@ -50,7 +50,7 @@ def Get_Status_code(apiLink):
         return statusCode
     except:
         print apiLink
-        print "The above is faulty"
+        print "The site is faulty"
 
 
 class Verify_LB_Web_Maps(unittest.TestCase):
