@@ -23,44 +23,52 @@ display.start()
 
 # Function to access Agency LB Website and retrieve Google Maps API link
 def Get_Google_Maps_API_Link(driver, url):
-    # Access web page
-    driver.get(url)
-    # Gather all elements that have an img tag
-    _inputs = driver.find_elements_by_xpath('//img')
-    # Print page title for easy reference and review
-    print driver.title
-    # Loop through all img web elements and find element holding the Google API Link
-    for input in _inputs:
-        item = str(input.get_attribute('src'))
-        if 'https://maps.googleapis.com/maps/api' in item:
-            # Return the Google API link
-            return input.get_attribute('src')
+    try:
+        # Access web page
+        driver.get(url)
+        # Gather all elements that have an img tag
+        _inputs = driver.find_elements_by_xpath('//img')
+        # Print page title for easy reference and review
+        print driver.title
+        # Loop through all img web elements and find element holding the Google API Link
+        for input in _inputs:
+            item = str(input.get_attribute('src'))
+            if 'https://maps.googleapis.com/maps/api' in item:
+                # Return the Google API link
+                return input.get_attribute('src')
+    except:
+        print url
+        print "The above is faulty"
 
 
 # Function to get the status code for an API request, given the proper link
 def Get_Status_code(apiLink):
-    apiRequest = requests.get(apiLink)
-    statusCode = apiRequest.status_code
-    print statusCode
-    return statusCode
+    try:
+        apiRequest = requests.get(apiLink)
+        statusCode = apiRequest.status_code
+        print statusCode
+        return statusCode
+    except:
+        print apiLink
+        print "The above is faulty"
 
 
-class Verify_LB_Web_Map(unittest.TestCase):
+class Verify_LB_Web_Maps(unittest.TestCase):
 
 
     def test_LB_Maps(self):
         driver = webdriver.Chrome()
         testcounter = 0
 
-        # Idaho LB Web Test ( With comments that apply for each following agency)
+        # Idaho LB Web Test ( With comments that apply for each of the following agencies)
         urlID = 'http://lb.511.idaho.gov/idlb/'
         # Get Map link that connects with Google API
         apiLink = Get_Google_Maps_API_Link(driver, urlID)
         # Get the status of the request to the Google API
-        statuscodeID = Get_Status_code(apiLink)
+        statusCodeID = Get_Status_code(apiLink)
 
         # If the map is down, then the test will fail and trigger an email in Jenkins
-        if  statuscodeID != 200:
+        if  statusCodeID != 200:
             print 'LB Idaho Map Is Down'
             testcounter += 1
 
