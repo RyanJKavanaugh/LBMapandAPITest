@@ -25,6 +25,8 @@ from pyvirtualdisplay import Display
 def Get_Google_Maps_API_Link(driver, url):
     try:
         # Access web page
+        # test item77
+        #print url
         driver.get(url)
         # Gather all elements that have an img tag
         _inputs = driver.find_elements_by_xpath('//img')
@@ -33,10 +35,14 @@ def Get_Google_Maps_API_Link(driver, url):
         # Loop through all img web elements and find element holding the Google API Link
         for input in _inputs:
             item = str(input.get_attribute('src'))
-            if 'https://maps.googleapis.com/maps/api' in item:
+            #print item
+            if '://maps.googleapis.com/maps/api' in item:
                 # Return the Google API link
-                return input.get_attribute('src')
-    except:
+                #return input.get_attribute('src')
+                # print 'API Link'
+                # print item
+                return item
+    except Exception as e:
         print url
         print "The site is faulty"
 
@@ -48,9 +54,11 @@ def Get_Status_code(apiLink):
         statusCode = apiRequest.status_code
         print statusCode
         return statusCode
-    except:
+    except Exception as e:
+        print e
+        print
         print apiLink
-        print "The site is faulty"
+        print "The API call is faulty"
 
 
 class Verify_LB_Web_Maps(unittest.TestCase):
