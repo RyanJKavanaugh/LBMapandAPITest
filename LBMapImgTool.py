@@ -18,8 +18,8 @@ import requests
 from pyvirtualdisplay import Display
 
 
-display = Display(visible=0, size=(800, 800))
-display.start()
+# display = Display(visible=0, size=(800, 800))
+# display.start()
 
 # Function to access Agency LB Website and retrieve Google Maps API link
 def Get_Google_Maps_API_Link(driver, url):
@@ -78,7 +78,7 @@ class Verify_LB_Web_Maps(unittest.TestCase):
         linkLA = Get_Google_Maps_API_Link(driver, urlLA)
         statuscodeLA = Get_Status_code(linkLA)
 
-        if  statuscodeLA != 200:
+        if statuscodeLA != 200:
             print 'LB Loisiana Map Is Down'
             testcounter += 1
 
@@ -104,7 +104,7 @@ class Verify_LB_Web_Maps(unittest.TestCase):
 
 
         # Sacog
-        urlSACOG = 'http://sa.carsstage.org/salbweb/'
+        urlSACOG = 'https://lb.riverregion511.org/salb/'
         linkSACOG = Get_Google_Maps_API_Link(driver, urlSACOG)
         statuscodeSACOG = Get_Status_code(linkSACOG)
 
